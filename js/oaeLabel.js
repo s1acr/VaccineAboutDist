@@ -45,7 +45,7 @@ $(function () {
                         // 渲染搜索结果
                         renderOAETermParents(parentData.data)
                     },
-                    IRI = data.data.parentTermIRI
+                    IRI = data.data.termIRI
                 )
             },
             IRI = iri
