@@ -1,0 +1,14 @@
+.divide_line {
+  width: 100%;
+  height: 2px;
+  background-color: rgb(208, 208, 232);
+}
+
+.collapsed {
+  height: 160px;
+  overflow: hidden;
+}
+
+#check_btn::after {
+  content: '查看详情';
+}
