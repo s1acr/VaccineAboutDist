@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AdverseReactionReport</title>
+    <link rel="stylesheet" type="text/css" href="./css/adverse.css">
+    <script src="myscript.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
+    <link rel="stylesheet" type="text/css" href="./css/common.css">
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
+        type="text/css" />
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+        rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+    <script src="./js/adverse.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation-->
+    <nav id="bar" class="navbar navbar-light bg-light static-top">
+        <div class="" style="margin-left: 20px;">
+            <li class=""><a class="navbar-brand" href="index.html">VaccineAbout</a></li>
+            <li class=""><a class="navbar-brand" href="vaccineCFDA.html">疫苗查询</a></li>
+            <li><a class="navbar-brand" href="adverse.html">不良反应报告</a></li>
+            <li><a class="navbar-brand" href="oaeLabel.html">OAE词条</a></li>
+            <li><a class="navbar-brand" href="questionnaire.html">问卷</a></li>
+            <li><a class="navbar-brand" href="vaers.html">Vaers</a></li>
+        </div>
+        <li style="margin-right: 20px;"><a id="btn_login" class="btn btn-primary " href="javascript:;">登录</a></li>
+    </nav>
+
+
+    
+
+    <div class="a1">
+        
+
+        <h2 class="a6">Report an Adverse Event - Patient Information</h2>
+
+        <div class="a2">
+            <form action="">
+                <p class="a0">Note: Fields marked with an * are essential and should be completed.</p>
+
+                <label for="code">编码</label>
+                <input type="text" id="code" name="code" placeholder="你的编码..">
+
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" placeholder="你的姓名..">
+
+                <div id="sex">性别
+                    <input type="radio" name="sex" value="male" class="adverse-event-sex">男
+                    <input type="radio" name="sex" value="female" class="adverse-event-sex">女
+                </div>
+
+                <div >出生日期  
+                    <input type="text" id="date of birth" name="date of birth" placeholder="你的出生日期..">
+                </div>
+
+                <label for="Phone">联系电话</label>
+                <input type="text" id="Phone" name="Phone" placeholder="你的电话..">
+
+                <label for="country">国家</label>
+                <select id="country" name="country">
+                    <option value="australia">中国</option>
+                    <option value="canada">美国</option>
+                    <option value="usa">日本</option>
+                </select>
+
+                <label for="lcity">城市</label>
+                <select id="lcity" name="city">
+                    <option value="重庆">重庆</option>
+                    <option value="北京">北京</option>
+                    <option value="上海">上海</option>
+                </select>
+
+
+                <label for="lStreet address">现住址</label>
+                <input type="text" id="lStreet address" name="Street address" placeholder="你的当前住址..">
+
+                <div>不良反应发生日期
+                    
+                <input type="text" id="Date adverse event started" name="Date adverse event started"
+                    placeholder="不良反应发生日期..">
+                </div>
+
+        
+                <p>*不良反应描述</p>
+                <textarea id="adverse-event-description"></textarea>
+
+                <label for="1Treatment unit">就诊单位</label>
+                <input type="text" id="1Treatment unit" name="Treatment unit" placeholder="就诊单位..">
+
+                <label for="1rapporteur">报告人</label>
+                <input type="text" id="1rapporteur" name="rapporteur" placeholder="报告人..">
+
+                <label for="1rapporteurPhone">报告人联系电话</label>
+                <input type="text" id="1rapporteurPhone" name="rapporteurPhone" placeholder="报告人的电话..">
+
+                <label for="1rapporteurAddress">报告单位</label>
+                <input type="text" id="1rapporteurAddress" name="rapporteurAddress" placeholder="报告单位..">
+
+                <div>疫苗接种情况<br>
+                    <table border="1" class="table01">
+                        <tbody>
+                            <caption>可疑疫苗接种情况(按最可疑的疫苗顺序填写)</caption>
+                            <tr>
+                                <td></td>
+                                <td>选择疫苗</td>
+                                <td>生产企业</td>
+                                <td>接种日期</td>
+                                <td>接种剂次</td>
+                                <td>接种途径</td>
+                                <td>接种部位</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                                <td><input></td>
+                            </tr>
+                        </tbody>
+
+
+                    </table>
+
+                    <input type="submit" value="Submit" id="adverse-event-submit-btn">
+            </form>
+        </div>
+    </div>
+
+    <div class="search-result">
+
+    </div>
+
+
+    <!-- Footer-->
+    <footer class="footer bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a href="#!">About</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!">Contact</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                        <li class="list-inline-item">⋅</li>
+                        <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">&copy; VaccineAbout 2023. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item me-4">
+                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
