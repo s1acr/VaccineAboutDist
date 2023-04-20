@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    align-items: center;
+    list-style: none;
+    background-color: #2A2829;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    overflow: hidden;
+}
+
+.nav-brand {
+    color: white;
+    text-decoration: none;
+    margin: 0.5rem 0.5rem;
+    padding: 0.3rem 0.8rem;
+}
+
+.nav-brand:hover {
+    background-color: white;
+    color: black;
+    border-radius: 0.3rem;
+}
+
+#nav-login-btn {
+    color: white;
+    text-decoration: none;
+    margin-right: 2rem;
+    border: 1px solid white;
+    border-radius: 0.4rem;
+    padding: 0.5rem 0.8rem;
+    cursor: pointer;
+}
+
+#nav-login-btn:hover {
+    color: lightgray;
+    border: 1px solid lightgray;
+}
+

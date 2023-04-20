@@ -7,53 +7,29 @@
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cn">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
     <title>Vaccine About</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
-        type="text/css" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/vaccineCFDA.css" rel="stylesheet" />
-    <link href="css/common.css" rel="stylesheet" />
-    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/widget/navbar.css" rel="stylesheet" />
+    <link href="css/widget/footer.css" rel="stylesheet" />
 </head>
 
 <body>
-
-
-
     <!-- Navigation-->
-    <nav id="bar" class="navbar navbar-light bg-light static-top">
-        <div class="" style="margin-left: 20px;">
-            <li class=""><a class="navbar-brand" href="index.html">VaccineAbout</a></li>
-            <li class=""><a class="navbar-brand" href="vaccineCFDA.html">疫苗查询</a></li>
-            <li><a class="navbar-brand" href="adverse.html">不良反应报告</a></li>
-            <li><a class="navbar-brand" href="oaeLabel.html">OAE词条</a></li>
-            <li><a class="navbar-brand" href="questionnaire.html">问卷</a></li>
-            <li><a class="navbar-brand" href="vaers.html">Vaers</a></li>
-
-
-            <!-- <li class="nav-item dropdown">
-                    <a class="navbar-brand dropdown-toggle" id="navbarDropdownBlog" href="#" role="button"
-                        data-bs-toggle="dropdown" aria-expanded="false">Blog</a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                        <li><a class="dropdown-item" href="blog-home.html">Blog Home</a></li>
-                        <li><a class="dropdown-item" href="blog-post.html">Blog Post</a></li>
-                    </ul>
-                </li> -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a class="nav-brand" href="index.html">VaccineAbout</a>
+            <a class="nav-brand" href="vaccineCFDA.html">疫苗查询</a>
+            <a class="nav-brand" href="adverse.html">不良反应报告</a>
+            <a class="nav-brand" href="adverse.html">不良反应报告查询</a>
+            <a class="nav-brand" href="oaeLabel.html">OAE词条</a>
+            <a class="nav-brand" href="questionnaire.html">问卷</a>
+            <a class="nav-brand" href="vaers.html">Vaers</a>
         </div>
-        <li style="margin-right: 20px;"><a id="btn_login" class="btn btn-primary " href="javascript:;">登录</a></li>
+        <li id="nav-login-btn"><a>登录</a></li>
     </nav>
 
 
@@ -69,10 +45,6 @@
                     </div>
                     <button id="va_search_btn" type="button" class=" btn btn-default" style="float: left;">查询</button>
                 </div>
-
-
-
-
             </div>
         </div>
 
@@ -118,48 +90,24 @@
 
     <div id="adverse_box">
         <div class="container" style="padding:0">
-
-
         </div>
-
-
-
-
     </div>
 
-
-
-
     <!-- Footer-->
-    <footer class="footer bg-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                    <ul class="list-inline mb-2">
-                        <li class="list-inline-item"><a href="#!">About</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Contact</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                    </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; VaccineAbout 2023. All Rights Reserved.</p>
-                </div>
-                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                        </li>
-                    </ul>
-                </div>
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content-home">
+                <ul class="footer-content-home-list">
+                    <li class="footer-content-home-list-item"><a href="#!">About</a></li>
+                    <li class="footer-content-home-list-item">⋅</li>
+                    <li class="footer-content-home-list-item"><a href="#!">Contact</a></li>
+                    <li class="footer-content-home-list-item">⋅</li>
+                    <li class="footer-content-home-list-item"><a href="#!">Terms of Use</a></li>
+                    <li class="footer-content-home-list-item">⋅</li>
+                    <li class="footer-content-home-list-item"><a href="#!">Privacy Policy</a></li>
+                </ul>
             </div>
+            <p class="footer-license">&copy; VaccineAbout 2023. All Rights Reserved.</p>
         </div>
     </footer>
 
