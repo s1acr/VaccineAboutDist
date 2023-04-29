@@ -5,8 +5,6 @@ var symptomId
 $(function () {
     initVaccineResultList()
     initSymptomResultList()
-
-
     // 初始化点击事件
     // search-result-item点击事件
     initSearchResultItemOnClickListener()
@@ -17,6 +15,8 @@ $(function () {
     initSymptomSearchOnClickListener()
     // submit-button点击事件
     initSubmitButtionOnClickListener()
+    // pagination点击事件
+    initPaginationOnClickListener()
 
     // 初始化vaccine-input的回车监听
     initVaccineInputOnKeyPress()
@@ -33,7 +33,7 @@ $(function () {
 function initVaccineResultList() {
     loadVaccineResult(
         onSuccess = function (data) {
-            handleVaccineResult(data.data.vaccines)
+            handleVaccineResult(data.data.data)
         }
     )
 }
@@ -42,7 +42,7 @@ function initVaccineResultList() {
 function initSymptomResultList() {
     loadSymptomResult(
         onSuccess = function (data) {
-            handleSymptomResult(data.data.symptoms)
+            handleSymptomResult(data.data.data)
         }
     )
 }
@@ -81,7 +81,7 @@ function initVaccineSearchOnClickListener() {
         var content = $('#vaccine-input').val()
         loadVaccineResult(
             onSuccess = function (data) {
-                handleVaccineResult(data.data.vaccines)
+                handleVaccineResult(data.data.data)
             },
             keyword = content
         )
@@ -94,7 +94,7 @@ function initSymptomSearchOnClickListener() {
         var content = $('#symptom-input').val()
         loadSymptomResult(
             onSuccess = function (data) {
-                handleSymptomResult(data.data.symptoms)
+                handleSymptomResult(data.data.data)
             },
             keyword = content
         )
@@ -104,10 +104,22 @@ function initSymptomSearchOnClickListener() {
 // 初始化submit-button点击事件
 function initSubmitButtionOnClickListener() {
     $('#vaers-submit-button').on('click', function () {
+        if (vaccineId == undefined && symptomId == undefined) {
+            // 添加class
+            $('#snackbar').addClass('show')
+            $('#snackbar').text('请至少选择一项')
+            setTimeout(function () {
+                $('#snackbar').removeClass('show')
+            }, 2000);
+            return
+        }
+        // 如果vaers-search-result隐藏
+        $('.vaers-search-result').show()
         loadVaersResult(
             onSuccess = function (data) {
                 console.log(data)
-                handleVaersResult(data.data.results)
+                handleVaccineResultPagination(data)
+                handleVaersResult(data.data.data)
             },
             vaccineId = vaccineId,
             symptomId = symptomId
@@ -122,7 +134,7 @@ function initVaccineInputOnKeyPress() {
             var content = $('#vaccine-input').val()
             loadVaccineResult(
                 onSuccess = function (data) {
-                    handleVaccineResult(data.data.vaccines)
+                    handleVaccineResult(data.data.data)
                 },
                 keyword = content
             )
@@ -137,11 +149,39 @@ function initSymptomInputOnKeyPress() {
             var content = $('#symptom-input').val()
             loadSymptomResult(
                 onSuccess = function (data) {
-                    handleSymptomResult(data.data.symptoms)
+                    handleSymptomResult(data.data.data)
                 },
                 keyword = content
             )
         }
+    })
+}
+
+// 初始化pagination点击事件
+function initPaginationOnClickListener() {
+    $('#pagination-before').on('click', function () {
+        let page = $('#pagination-current').val()
+        loadVaersResult(
+            onSuccess = function (data) {
+                handleVaccineResultPagination(data)
+                handleVaersResult(data.data.data)
+            },
+            vaccineId = vaccineId,
+            symptomId = symptomId,
+            page = page-1
+        )
+    })
+    $('#pagination-after').on('click', function () {
+        let page = $('#pagination-current').val()
+        loadVaersResult(
+            onSuccess = function (data) {
+                handleVaccineResultPagination(data)
+                handleVaersResult(data.data.data)
+            },
+            vaccineId = vaccineId,
+            symptomId = symptomId,
+            page = page+1
+        )
     })
 }
 
@@ -191,10 +231,15 @@ function handleVaersResult(results) {
     }
 }
 
+// 处理VaccineResult的分页操作
+function handleVaccineResultPagination(data) {
+    $('#pagination-current').text(data.data.page)
+}
+
 // 加载VaccineResult
 function loadVaccineResult(onSuccess, keyword = "", page = 1, pageSize = 20) {
     $.ajax({
-        url: "http://43.140.194.248:8080/api/vaers/vaccine",
+        url: "http://43.140.194.248/api/vaers/vaccine",
         type: "get",
         dataType: "json",
         data: {
@@ -216,7 +261,7 @@ function loadVaccineResult(onSuccess, keyword = "", page = 1, pageSize = 20) {
 // 加载SymptomResult
 function loadSymptomResult(onSuccess, keyword = "", page = 1, pageSize = 20) {
     $.ajax({
-        url: "http://43.140.194.248:8080/api/vaers/symptom",
+        url: "http://43.140.194.248/api/vaers/symptom",
         type: "get",
         dataType: "json",
         data: {
@@ -235,11 +280,13 @@ function loadSymptomResult(onSuccess, keyword = "", page = 1, pageSize = 20) {
 }
 
 // 加载VaersResult
-function loadVaersResult(onSuccess, vaccineId, symptomId) {
+function loadVaersResult(onSuccess, vaccineId, symptomId, page=1, pageSize=10) {
     // 隐藏table，显示loading
-    $('.vaers-result-table').hide()
+    $('.vaers-result-table-box').hide()
     $('.spinner').show()
     var data = {}
+    data.page = page
+    data.pageSize = pageSize
     if (vaccineId) {
         data.vaccineId = vaccineId
     }
@@ -247,47 +294,15 @@ function loadVaersResult(onSuccess, vaccineId, symptomId) {
         data.symptomId = symptomId
     }
     $.ajax({
-        url: "http://43.140.194.248:8080/api/vaers",
+        url: "http://43.140.194.248/api/vaers",
         type: "get",
         dataType: "json",
         data: data,
         success: function (data) {
             console.log("数据加载成功")
             // 显示table，隐藏loading
-            $('.vaers-result-table').show()
+            $('.vaers-result-table-box').show()
             $('.spinner').hide()
-
-            // 如果vaers-search-result隐藏
-            $('.vaers-search-result').show()
-            // 设置pagination
-            $('.page-item').remove('.page-num')
-            var page = data.data.page
-            var pageSize = data.data.pageSize
-            var total = data.data.total
-            var i = 1
-            var html = `
-                    <li class="page-item page-num">
-                        <a class="page-link" id="page-item-${i}">${i}</a>
-                    </li>
-                `
-            $('#page-item-next').before(html)
-            i++;
-            while (i * pageSize < total) {
-                // 如果在显示范围内
-                if (i > page - 3 && i < page + 3) {
-                    var html = `
-                            <li class="page-item page-num">
-                                <a class="page-link" id="page-item-${i}">${i}</a>
-                            </li>
-                        `
-                    $('#page-item-next').before(html)
-                } else if (i >= page + 3) {
-                    break
-                }
-                i++
-                console.log(i)
-            }
-            $(`#page-item-${page}`).addClass("active").siblings().removeClass("active")
             // 回调函数
             onSuccess(data);
         },
