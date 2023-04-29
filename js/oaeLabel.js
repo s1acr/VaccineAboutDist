@@ -1,5 +1,29 @@
 
 $(function () {
+
+    $.ajax({
+        url: "http://localhost:8080/api/user/login?username=wo&password=1",
+        type: "post",
+        dataType: "json",
+        data: {
+            username: "wo",
+            password: "1"
+        },
+        success: function (data) {
+            console.log(data)
+        },
+        error: function (error) {
+            console.log(error.responseJSON.message)
+            console.log("error -> 登录失败")
+        },
+        statusCode: {
+            502: function (data) {
+                console.log(data.responseJSON.message)
+                console.log("statusCode -> 登录失败")
+            }
+        }
+    })
+
     // 获取页面高度
     var height = document.documentElement.clientHeight
     $(".content-box").css("min-height", height)

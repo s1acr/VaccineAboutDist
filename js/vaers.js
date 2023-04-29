@@ -6,6 +6,7 @@ $(function () {
     initVaccineResultList()
     initSymptomResultList()
 
+
     // 初始化点击事件
     // search-result-item点击事件
     initSearchResultItemOnClickListener()
