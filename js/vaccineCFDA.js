@@ -5,6 +5,12 @@ $(function () {
 
 
     initSumbmitOnClickListener()
+
+    // 隐藏
+    $('.vaccine-detail-box').hide()
+    $('.vaccine-detail-box').click(() => {
+        $('.vaccine-detail-box').hide()
+    })
 })
 
 function initSumbmitOnClickListener() {
@@ -59,14 +65,14 @@ function renderVaccineTypeList(typeList) {
     })
 }
 
-function renderVaccineList(vaccineList, isClear=false) {
-    if(isClear) {
+function renderVaccineList(vaccineList, isClear = false) {
+    if (isClear) {
         $('#vaccine-search-result-box').html('')
     }
     $.each(vaccineList, (index, e) => {
         let html = `
             <div class="vaccine-result-item">
-                <div class="vaccine-result-card">
+                <div class="vaccine-result-card" id="vaccine-result-${e.id}">
                     <div class="vaccine-result-title">${e.type}</div>
                     <div class="vaccine-result-label">疫苗名称</div>
                     <div class="vaccine-result-name">${e.productName}</div>
@@ -76,7 +82,19 @@ function renderVaccineList(vaccineList, isClear=false) {
             </div>
         `
         $('#vaccine-search-result-box').append(html)
+        $(`#vaccine-result-${e.id}`).click(function () {
+            renderVaccineDetailCard(e)
+        })
     })
+}
+
+function renderVaccineDetailCard(vaccine) {
+    let names = Object.getOwnPropertyNames(vaccine)
+    $.each(names, (i, n) => {
+        let id = `#vaccine-${n}`
+        $(id).text(vaccine[n])
+    })
+    $('.vaccine-detail-box').show()
 }
 
 

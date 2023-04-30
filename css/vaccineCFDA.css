@@ -272,3 +272,73 @@ body {
   text-overflow: ellipsis;
 }
 
+.vaccine-detail-box {
+  background-color: rgba(65, 65, 65, 0.329);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.vaccine-detail-card {
+  background-color: #242424;
+  width: 500px;
+  max-width: 100%;
+  z-index: 1;
+  margin: 0 auto;
+  position: absolute;
+  max-height: 76%;
+  outline: black 2px solid;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow: auto;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.vaccine-detail-card::-webkit-scrollbar {
+  background-color: #242424;
+  border-radius: 0 10px 10px 0;
+}
+
+.vaccine-detail-card::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.vaccine-detail-title {
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+}
+
+.vaccine-detail-item {
+  display: flex;
+  flex-direction: row;
+}
+
+.vaccine-detail-label {
+  outline: white 1px solid;
+  background-color: #242424;
+  color: white;
+  width: 20%;
+  text-align: center;
+  padding: 7px;
+}
+
+.vaccine-detail-value {
+  background-color: white;
+  color: black;
+  border: black 2px solid;
+  outline: white 1px solid;
+  width: 80%;
+  text-align: center;
+  padding: 7px;
+}
+
