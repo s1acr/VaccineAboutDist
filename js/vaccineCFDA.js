@@ -3,28 +3,37 @@ $(function () {
     initVaccineTypeList()
     initVaccineList()
 
-
     initSumbmitOnClickListener()
-
+    initTypeDetailLabelOnClickListener()
     // 隐藏
     $('.vaccine-detail-box').hide()
     $('.vaccine-detail-box').click(() => {
         $('.vaccine-detail-box').hide()
     })
+    $('#vaccine-type-detail').hide()
 })
 
 function initSumbmitOnClickListener() {
     $("#vaccine-submit-button").click(function () {
         let keyword = $("#vaccine-input-product-name").val()
-        console.log(keyword)
+        $('#vaccine-type-detail').hide()
         loadVaccineList(
             onSuccess = function (json) {
-                console.log(json)
                 let vaccineList = json.data.data
                 renderVaccineList(vaccineList, true)
             },
             keyword = keyword
         )
+    })
+}
+
+function initTypeDetailLabelOnClickListener() {
+    $('#vaccine-type-detail-label-list li').on('click', function () {
+        $(this).addClass('active')
+        $(this).siblings().removeClass('active')
+        let field = $(this).attr('id')
+        let value = eval('vaccineDetail.' + field)
+        $('.vaccine-type-detail-content-box').html(value)
     })
 }
 
@@ -47,20 +56,29 @@ function initVaccineList() {
     )
 }
 
+var vaccineDetail
 function renderVaccineTypeList(typeList) {
     $.each(typeList, function (index, e) {
-        let html = `<li>${e.type}</li>`
+        let html = `<li typeId="${e.id}">${e.type}</li>`
         $('#vaccine-type-container').append(html)
     })
     $('#vaccine-type-container').on('click', 'li', function () {
         let typeStr = $(this).text()
+        let typeId = $(this).attr('typeId')
+        $('#vaccine-type-detail').show()
         loadVaccineListByType(
             onSuccess = function (json) {
-                console.log(json)
                 let vaccineList = json.data.data
                 renderVaccineList(vaccineList, true)
             },
             type = typeStr
+        )
+        loadVaccineTypeDetail(
+            onSuccess = function (json) {
+                vaccineDetail = json.data
+                $('#vaccine-type-detail-label-list li:first-child').trigger('click')
+            },
+            typeId = typeId
         )
     })
 }
@@ -120,7 +138,6 @@ function loadVaccineList(onSuccess, keyword = "", page = 1, pageSize = 20) {
         pageSize: pageSize,
         productName: keyword
     }
-    console.log(query)
     $.ajax({
         url: "http://43.140.194.248/api/vaccine/cfda",
         type: "GET",
@@ -140,6 +157,21 @@ function loadVaccineListByType(onSuccess, type, page = 1, pageSize = 20) {
     }
     $.ajax({
         url: "http://43.140.194.248/api/vaccine/cfda",
+        type: "GET",
+        dataType: "json",
+        data: query,
+        success: function (data) {
+            onSuccess(data)
+        }
+    })
+}
+
+function loadVaccineTypeDetail(onSuccess, typeId) {
+    let query = {
+        id: typeId
+    }
+    $.ajax({
+        url: "http://43.140.194.248/api/vaccine/type",
         type: "GET",
         dataType: "json",
         data: query,
