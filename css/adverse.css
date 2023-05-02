@@ -572,6 +572,7 @@ textarea.report-item-input {
     opacity: 0;
     z-index: -1;
     animation: delete-show 0.5s forwards;
+    display: none;
 }
 
 @keyframes delete-show {

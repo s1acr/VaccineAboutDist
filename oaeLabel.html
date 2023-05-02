@@ -9,95 +9,84 @@
     <link href="css/oaeLabel.css" rel="stylesheet" />
     <script src="./js/oaeLabel.js"></script>
     <link href="./css/widget/nav-bar.css" rel="stylesheet" />
-    <link href="./css/widget/footer.css" rel="stylesheet" />
 
 </head>
 
 <body>
-    <!-- Navigation-->
-    <nav class="nav-bar">
-        <div class="nav-container">
-            <a class="nav-brand" href="index.html">VaccineAbout</a>
-            <a class="nav-brand" href="vaccineCFDA.html">疫苗查询</a>
-            <a class="nav-brand" href="adverse.html">不良反应报告</a>
-            <a class="nav-brand" href="adverse.html">不良反应报告查询</a>
-            <a class="nav-brand" href="oaeLabel.html">OAE词条</a>
-            <a class="nav-brand" href="questionnaire.html">问卷</a>
-            <a class="nav-brand" href="vaers.html">Vaers</a>
-        </div>
-        <li id="nav-login-btn"><a>登录</a></li>
-    </nav>
 
-    <!-- Page Content -->
-    <div class="main-content">
-        <!-- Title -->
-        <div class="page-title">
-            <h1>Ontology of Adverse Events</h1>
+    <div class="content">
+        <div class="top-title-box">
+            <div class="main-title">
+                <h1 class="main-title-text">V a c c i n e<br>A b o u t</h1>
+            </div>
+            <p class="main-title-describe">上市疫苗信息咨询及安全监测系统</p>
         </div>
-        <!-- Search -->
-        <div class="search-box">
-            <label for="search-keyword" id="search-keyword-label">keyword:</label>
-            <input type="text" class="search-input" id="search-keyword" />
-            <button class="search-btn" id="search-keyword-btn">搜索</button>
-        </div>
+        <!-- Navigation-->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a class="nav-brand" href="index.html">VaccineAbout</a>
+                <a class="nav-brand" href="vaccineCFDA.html">疫苗查询</a>
+                <a class="nav-brand" href="adverse.html">不良反应报告</a>
+                <a class="nav-brand" href="adverse.html">不良反应报告查询</a>
+                <a class="nav-brand" href="oaeLabel.html">OAE词条</a>
+                <a class="nav-brand" href="questionnaire.html">问卷</a>
+                <a class="nav-brand" href="vaers.html">Vaers</a>
+            </div>
+        </nav>
 
-        <!-- Content -->
-        <div class="content-box">
-            <!-- loading -->
-            <div class="loading-box">
-                <div class="spinner-border text-primary" role="status"></div>
+        <!-- Page Content -->
+        <div class="main-content">
+            <!-- Title -->
+            <div class="page-title">
+                <h1>Ontology of Adverse Events</h1>
+            </div>
+            <!-- Search -->
+            <div class="search-box">
+                <label for="search-keyword" id="search-keyword-label">keyword:</label>
+                <input type="text" class="search-input" id="search-keyword" />
+                <button class="search-btn" id="search-keyword-btn">搜索</button>
             </div>
 
-            <!-- search result -->
-            <div class="search-result-box">
-                <div class="search-result-content">
-                    <ul class="search-result-list">
-                    </ul>
+            <!-- Content -->
+            <div class="content-box">
+                <!-- loading -->
+                <div class="loading-box">
+                    <div class="spinner-border text-primary" role="status"></div>
                 </div>
-            </div>
 
-            <!-- result item -->
-            <div class="result-item-box">
-                <div class="result-item">
-                    Class:
-                    <span class="oae-class-value">fever</span>
+                <!-- search result -->
+                <div class="search-result-box">
+                    <div class="search-result-content">
+                        <ul class="search-result-list">
+                        </ul>
+                    </div>
                 </div>
-                <div class="result-item">
-                    Term IRI:
-                    <a class="oae-iri-value">http://www.w3.org/2000/01/rdf-schema#label</a>
-                </div>
-                <div class="result-item">
-                    Definition:
-                    <span class="oae-definition-value">An abnormal body temperature AE which has an outcome of
-                        fever</span>
-                </div>
-                <div class="result-item">
-                    Class Hierarchy:
-                    <div class="oae-hierarchy-box">
-                        
+
+                <!-- result item -->
+                <div class="result-item-box">
+                    <div class="result-item">
+                        Class:
+                        <span class="oae-class-value">fever</span>
+                    </div>
+                    <div class="result-item">
+                        Term IRI:
+                        <a class="oae-iri-value">http://www.w3.org/2000/01/rdf-schema#label</a>
+                    </div>
+                    <div class="result-item">
+                        Definition:
+                        <span class="oae-definition-value">An abnormal body temperature AE which has an outcome of
+                            fever</span>
+                    </div>
+                    <div class="result-item">
+                        Class Hierarchy:
+                        <div class="oae-hierarchy-box">
+
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Footer-->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content-home">
-                <ul class="footer-content-home-list">
-                    <li class="footer-content-home-list-item"><a href="#!">About</a></li>
-                    <li class="footer-content-home-list-item">⋅</li>
-                    <li class="footer-content-home-list-item"><a href="#!">Contact</a></li>
-                    <li class="footer-content-home-list-item">⋅</li>
-                    <li class="footer-content-home-list-item"><a href="#!">Terms of Use</a></li>
-                    <li class="footer-content-home-list-item">⋅</li>
-                    <li class="footer-content-home-list-item"><a href="#!">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <p class="footer-license">&copy; VaccineAbout 2023. All Rights Reserved.</p>
-        </div>
-    </footer>
 </body>
 
 </html>
