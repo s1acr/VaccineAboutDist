@@ -17,8 +17,6 @@ const hideElement = () => {
 }
 
 
-
-
 const initClickListener = () => {
     // 点击选择疫苗
     $('#table-vaccine-add-result-list').on('click', 'li', function () {
@@ -66,6 +64,14 @@ const initClickListener = () => {
     // 点击添加疫苗信息
     $('.report-vaccinate-table-last').click(function () {
         addVaccineInfoTableRow()
+    })
+    // 点击搜索疫苗
+    $('.table-vaccine-add-submit').click(function () {
+        var keyword = $('.table-vaccine-add-input').first().val()
+        console.log(keyword)
+        loadVaccineList(function (data) {
+            handleVaccineList(data)
+        }, keyword)
     })
     // 点击其他区域
     $(document).click(function (e) {
@@ -257,7 +263,7 @@ const loadSymptomTagList = (onSuccess, keyword, page = 1, pageSize = 20) => {
 
 const loadVaccineList = (onSuccess, keyword, page = 1, pageSize = 20) => {
     let query = {
-        keyword: keyword,
+        productName: keyword,
         page: page,
         pageSize: pageSize
     }
@@ -312,6 +318,7 @@ const showToast = (str) => {
 }
 
 const createVaccineSearchBox = (itemClickListener) => {
+    $('.table-vaccine-add-box').remove()
     let html = `
     <div class="table-vaccine-add-box">
         <div class="table-vaccine-add-input-box">
@@ -326,6 +333,13 @@ const createVaccineSearchBox = (itemClickListener) => {
     `
     let element = $(html)
     element.find('#table-vaccine-add-result-list').on('click', 'li', itemClickListener)
+    element.find('.table-vaccine-add-submit').click(function () {
+        let keyword = element.find('.table-vaccine-add-input').val()
+        console.log(keyword)
+        loadVaccineList(function (data) {
+            handleVaccineList(data)
+        }, keyword)
+    })
     return element
 }
 
