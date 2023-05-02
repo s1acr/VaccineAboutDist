@@ -26,6 +26,9 @@
     text-decoration: none;
     margin: 0.5rem 0.5rem;
     padding: 0.3rem 0.8rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .nav-brand:hover {
