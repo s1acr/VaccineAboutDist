@@ -65,7 +65,6 @@ function renderVaccineTypeList(typeList) {
     $('#vaccine-type-container').on('click', 'li', function () {
         let typeStr = $(this).text()
         let typeId = $(this).attr('typeId')
-        $('#vaccine-type-detail').show()
         loadVaccineListByType(
             onSuccess = function (json) {
                 let vaccineList = json.data.data
@@ -76,7 +75,12 @@ function renderVaccineTypeList(typeList) {
         loadVaccineTypeDetail(
             onSuccess = function (json) {
                 vaccineDetail = json.data
-                $('#vaccine-type-detail-label-list li:first-child').trigger('click')
+                if (vaccineDetail.disease_introduction != "") {
+                    $('#vaccine-type-detail').show()
+                    $('#vaccine-type-detail-label-list li:first-child').trigger('click')
+                }else {
+                    $('#vaccine-type-detail').hide()
+                }
             },
             typeId = typeId
         )
