@@ -1,46 +1,23 @@
 
 $(function () {
-
-    $.ajax({
-        url: "http://localhost:8080/api/user/login?username=wo&password=1",
-        type: "post",
-        dataType: "json",
-        data: {
-            username: "wo",
-            password: "1"
-        },
-        success: function (data) {
-            console.log(data)
-        },
-        error: function (error) {
-            console.log(error.responseJSON.message)
-            console.log("error -> 登录失败")
-        },
-        statusCode: {
-            502: function (data) {
-                console.log(data.responseJSON.message)
-                console.log("statusCode -> 登录失败")
-            }
-        }
-    })
-
     // 获取页面高度
-    var height = document.documentElement.clientHeight
-    $(".content-box").css("min-height", height)
+    // var height = document.documentElement.clientHeight
+    // $(".content-box").css("min-height", height)
 
     // 初始化, 隐藏所有页面
-    $(".loading-box").hide()
     $(".search-result-box").hide()
     $(".result-item-box").hide()
 
     // 绑定点击事件
     // keyword搜索框Button点击事件
-    $("#search-keyword-btn").click(function () {
-        // 滚动到页面顶部
-        $("html,body").animate({
-            scrollTop: 0
-        })
-        startSearchOAETermList()
+    $("#search-keyword-btn").keyup(function (e) {
+        if (e.keyCode == 13) {
+            // 滚动到页面顶部
+            $("html,body").animate({
+                scrollTop: 0
+            })
+            startSearchOAETermList()
+        }
     })
 
     // 搜索结果点击事件
@@ -51,13 +28,11 @@ $(function () {
         })
         var iri = $(this).attr('IRI')
         // 显示loading
-        $(".loading-box").show()
         $(".search-result-box").hide()
         $(".result-item-box").hide()
         loadOAETerm(
             onSuccess = function (data) {
                 // 隐藏loading, 显示搜索结果
-                $(".loading-box").hide()
                 $(".search-result-box").hide()
                 $(".result-item-box").show()
                 // 渲染搜索结果
@@ -82,6 +57,14 @@ $(function () {
             startSearchOAETermList()
         }
     })
+
+    // 返回按钮点击事件
+    $(".page-back-btn").click(function () {
+        $(".search-result-box").show()
+        $(".result-item-box").hide()
+    })
+
+    startSearchOAETermList()
 })
 
 function startSearchOAETermList() {
@@ -97,7 +80,7 @@ function startSearchOAETermList() {
             $(".search-result-box").show()
             $(".result-item-box").hide()
             // 渲染搜索结果
-            renderOAETermList(data.data.oaeTerms)
+            renderOAETermList(data.data.data)
         },
         keyword = keyword,
     )
@@ -117,7 +100,7 @@ function renderOAETermList(terms) {
         var item = terms[i]
         // 渲染搜索结果
         var html = `
-            <li IRI="${item.termIRI}">${item.termLabel}</li>
+            <li IRI="${item.termIRI}">${item.termLabel}<p>${item.definition}</p></li>
         `
         $(".search-result-list").append(html)
     }
@@ -141,7 +124,6 @@ function getOAETermParentsHtml(terms, i) {
     return html + `</ul>`
 }
 
-
 // 加载数据
 // 加载OAETerm
 function loadOAETerm(onSuccess, IRI) {
@@ -150,7 +132,7 @@ function loadOAETerm(onSuccess, IRI) {
         IRI: IRI
     }
     $.ajax({
-        url: "http://43.140.194.248:8080/api/oae/IRI",
+        url: "http://43.140.194.248/api/oae/IRI",
         type: "get",
         data: params,
         dataType: "json",
@@ -173,7 +155,7 @@ function loadOAETermList(onSuccess, keyword, page = 1, pageSize = 20) {
         pageSize: pageSize
     }
     $.ajax({
-        url: "http://43.140.194.248:8080/api/oae/label",
+        url: "http://43.140.194.248/api/oae/label",
         type: "get",
         data: params,
         dataType: "json",
@@ -194,7 +176,7 @@ function loadOAETermParents(onSuccess, IRI) {
         IRI: IRI
     }
     $.ajax({
-        url: "http://43.140.194.248:8080/api/oae/parent",
+        url: "http://43.140.194.248/api/oae/parent",
         type: "get",
         data: params,
         dataType: "json",
