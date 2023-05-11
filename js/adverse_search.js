@@ -57,8 +57,7 @@ function createResultItem(result) {
             <div class="title">#${result.id.toString(16).padStart(8, "0")}</div>
             <div class="sub-title">${result.createDate}</div>
         </div>
-        <div class="item-label">不良反应描述：</div>
-        <p class="item-long-text">${result.description}</p>
+        <p class="item-long-text" title="不良反应描述">${(result.description == "" ? "无" : result.description)}</p>
         <div class="tag-container">
         </div>
         <tip>点击显示详情</tip>

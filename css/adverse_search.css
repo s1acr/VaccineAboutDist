@@ -172,7 +172,6 @@ body {
 }
 
 .search-result-item {
-    padding: 10px;
     border: #2A2829 3px solid;
     border-radius: 10px;
     box-shadow: 2px 10px 20px -18px;
@@ -194,7 +193,6 @@ body {
     justify-content: space-between;
     align-items: baseline;
     font-weight: bold;
-    border-radius: 10px;
 }
 
 .search-result-item .title {
@@ -212,12 +210,11 @@ body {
 }
 
 .search-result-item .item-long-text {
-    background-color: rgba(211, 211, 211, 0.441);
-    border: #2A2829 2px solid;
     padding: 10px;
-    border-radius: 10px;
-    min-height: 100px;
-    word-wrap: break-word;
+    max-lines: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .search-result-item .tag-container {
