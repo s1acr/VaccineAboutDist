@@ -11,6 +11,8 @@ $(function () {
         $('.vaccine-detail-box').hide()
     })
     $('#vaccine-type-detail').hide()
+
+    window.open("/page/vaccine_detail.html?vaccineId=5")
 })
 
 function initSumbmitOnClickListener() {
