@@ -4,7 +4,7 @@ class Toast {
         if (!document.getElementById("snackbar")) {
             const html = $(`<div id="snackbar"></div>`)
             $("body").append(html)
-            var cssFileUrl='../../css/widget/snackbar.css';
+            const cssFileUrl='../../css/widget/snackbar.css';
             if (cssFileUrl) {
                 $("<link>")
                     .attr({
