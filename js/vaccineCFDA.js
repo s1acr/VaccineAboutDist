@@ -11,8 +11,6 @@ $(function () {
         $('.vaccine-detail-box').hide()
     })
     $('#vaccine-type-detail').hide()
-
-    window.open("/page/vaccine_detail.html?vaccineId=5")
 })
 
 function initSumbmitOnClickListener() {
@@ -107,18 +105,9 @@ function renderVaccineList(vaccineList, isClear = false) {
         `
         $('#vaccine-search-result-box').append(html)
         $(`#vaccine-result-${e.id}`).click(function () {
-            renderVaccineDetailCard(e)
+            window.open("/page/vaccine_detail.html?vaccineId=" + e.id)
         })
     })
-}
-
-function renderVaccineDetailCard(vaccine) {
-    let names = Object.getOwnPropertyNames(vaccine)
-    $.each(names, (i, n) => {
-        let id = `#vaccine-${n}`
-        $(id).text(vaccine[n])
-    })
-    $('.vaccine-detail-box').show()
 }
 
 
