@@ -9,6 +9,8 @@
 
     <link href="../css/advers_detail.css" rel="stylesheet">
 
+    <script src="../js/adverse_detail.js"></script>
+
 </head>
 
 <body>
@@ -35,7 +37,85 @@
             </div>
         </nav>
 
+        <div id="main-content">
+            <table class="detail-item" id="detail-item-base">
+                <tr>
+                    <th>姓名</th>
+                    <td id="detail-name"></td>
+                </tr>
+                <tr>
+                    <th>性别</th>
+                    <td id="detail-sex"></td>
+                </tr>
+                <tr>
+                    <th>出生日期</th>
+                    <td id="detail-birth"></td>
+                </tr>
+                <tr>
+                    <th>联系电话</th>
+                    <td id="detail-phone"></td>
+                </tr>
+                <tr>
+                    <th>现住址</th>
+                    <td id="detail-address"></td>
+                </tr>
+                <tr>
+                    <th>创建日期</th>
+                    <td id="detail-createDate"></td>
+                </tr>
+            </table>
+
+            <table class="detail-item" id="detail-item-adverse">
+                <tr>
+                    <th>就诊单位</th>
+                    <td id="detail-treatmentDepartment"></td>
+                </tr>
+                <tr>
+                    <th>反应发生日期</th>
+                    <td id="detail-onsetDate"></td>
+                </tr>
+                <tr>
+                    <th>报告人</th>
+                    <td id="detail-rapporteur"></td>
+                </tr>
+                <tr>
+                    <th>报告人联系电话</th>
+                    <td id="detail-rapporteurPhone"></td>
+                </tr>
+                <tr>
+                    <th>报告单位</th>
+                    <td id="detail-rapporteurAddress"></td>
+                </tr>
+                <tr>
+                    <th>不良反应描述</th>
+                    <td id="detail-description">ddddddddddddddddddddddd</td>
+                </tr>
+            </table>
+
+            <table class="detail-item vertical" id="detail-item-symptom">
+                <tr>
+                    <th>症状</th>
+                    <th>OAE</th>
+                </tr>
+            </table>
+
+            <table class="detail-item vertical" id="detail-item-vaccine">
+                <tr>
+                    <th>疫苗类型</th>
+                    <th>疫苗名称</th>
+                    <th>制造商</th>
+                    <th>接种日期</th>
+                    <th>接种剂次</th>
+                    <th>接种途径</th>
+                    <th>接种部位</th>
+                </tr>
+            </table>
+
+        </div>
+
     </div>
+
+    <script src="../js/widget/snackbar.js"></script>
 </body>
 
 </html>

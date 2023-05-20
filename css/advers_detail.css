@@ -51,3 +51,35 @@ body {
 .content {
     background-color: white;
 }
+
+#main-content {
+    background-color: white;
+}
+
+
+#main-content .detail-item {
+    border-collapse: collapse;
+    margin: 20px;
+}
+
+#main-content .detail-item th {
+    min-width: 100px;
+}
+
+#main-content .detail-item td {
+    overflow-wrap: break-word;
+    max-width: 845px;
+    min-width: 300px;
+}
+
+#main-content .detail-item.vertical td{
+    min-width: initial;
+}
+
+
+#main-content .detail-item th,td {
+    border: #2A2829 1px  solid;
+    padding: 5px 10px;
+    white-space: pre-line;
+    overflow: auto;
+}
