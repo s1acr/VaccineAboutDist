@@ -1,18 +1,6 @@
 
 $(function () {
     searchAdverse("")
-    
-    $('.bottom-detail-card').hide()
-
-    // 点击其他区域
-    $(document).click(function (e) {
-        let resultItem = $('.search-result-item')
-        let bottomCard = $('.bottom-detail-card')
-        if (!bottomCard.is(e.target) && bottomCard.has(e.target).length === 0
-            && !resultItem.is(e.target) && resultItem.has(e.target).length === 0) {
-            bottomCard.hide()
-        }
-    })
 })
 
 function searchAdverse(keyword) {
@@ -35,9 +23,8 @@ function handleAdverse(list) {
     })
 }
 
-function loadAdverse(onSuccess, keyword, page=1, pageSize=20) {
+function loadAdverse(onSuccess, page=1, pageSize=21) {
     let query = {
-        keyword: keyword,
         page: page,
         pageSize: pageSize
     }
@@ -53,7 +40,7 @@ function loadAdverse(onSuccess, keyword, page=1, pageSize=20) {
 }
 
 function createResultItem(result) {
-    let html = `
+    const html = `
     <div class="search-result-item">
         <div class="title-box">
             <div class="title">#${result.id.toString(16).padStart(8, "0")}</div>
@@ -65,8 +52,9 @@ function createResultItem(result) {
         <tip>点击显示详情</tip>
     </div>
     `
-    let element = $(html)
+    const element = $(html)
     $.each(result.symptomList, (i, e) => {
+        console.log(e.symptom)
         element.find(".tag-container").append(`<div class="tag-item">${e.symptom}</div>`)
     })
     return element

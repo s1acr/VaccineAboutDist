@@ -89,5 +89,8 @@ function createAdverseItem(result) {
     $.each(result.symptomList, (i, e) => {
         element.find(".tag-container").append(`<div class="tag-item">${e.symptom}</div>`)
     })
+    element.on("click", () => {
+        window.open(`adverse_detail.html?adverseId=${result.id}`)
+    })
     return element
 }

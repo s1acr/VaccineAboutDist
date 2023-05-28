@@ -11,7 +11,6 @@ function initPage() {
     }
     loadAdverseDetail(
         onSuccess = (json) => {
-            console.log(json)
             renderAdverseDetail(json.data)
         },
         id = adverseId
@@ -42,7 +41,7 @@ function renderAdverseDetail(detail) {
         let html = `
                 <tr>
                     <td>${v.type}</td>
-                    <td>${v.name}</td>
+                    <td class="vaccine_name clickable_item" id="vaccine_${1}">${v.name}</td>
                     <td>${v.manufacturer}</td>
                     <td>${v.vaccinateDate}</td>
                     <td>${v.dose}</td>
@@ -51,6 +50,10 @@ function renderAdverseDetail(detail) {
                 </tr>
             `
         $("#detail-item-vaccine").append(html)
+    })
+    $("#detail-item-vaccine").find("td.vaccine_name").on("click", () => {
+        let vaccineId = $(this).attr("id").split("_")[1]
+        window.open(`./vaccine_detail.html?vaccineId=${vaccineId}`)
     })
 }
 

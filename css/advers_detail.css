@@ -83,3 +83,13 @@ body {
     white-space: pre-line;
     overflow: auto;
 }
+
+.clickable_item {
+    cursor: pointer;
+    text-decoration: underline;
+    color: blue;
+}
+
+.clickable_item:hover {
+    color: darkblue;
+}
