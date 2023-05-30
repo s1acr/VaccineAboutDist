@@ -62,9 +62,39 @@ $(function () {
     $(".page-back-btn").click(function () {
         $(".search-result-box").show()
         $(".result-item-box").hide()
+        startSearchOAETermList()
     })
 
-    startSearchOAETermList()
+    const oaeId = getUrlParam("oaeId")
+    if (oaeId) {
+        loadOAETermById(
+            onSuccess = function (data) {
+                const iri = data.data.termIRI
+                loadOAETerm(
+                    onSuccess = function (data) {
+                        // 隐藏loading, 显示搜索结果
+                        $(".search-result-box").hide()
+                        $(".result-item-box").show()
+                        // 渲染搜索结果
+                        renderOAETerm(data.data)
+        
+                        // 加载OAETerm的父类
+                        loadOAETermParents(
+                            onSuccess = function (parentData) {
+                                // 渲染搜索结果
+                                renderOAETermParents(parentData.data)
+                            },
+                            IRI = data.data.termIRI
+                        )
+                    },
+                    IRI = iri
+                )
+            },
+            id = oaeId
+        )
+    }else {
+        startSearchOAETermList()
+    }
 })
 
 function startSearchOAETermList() {
@@ -146,6 +176,17 @@ function loadOAETerm(onSuccess, IRI) {
     })
 }
 
+function loadOAETermById(onSuccess, id) {
+    $.ajax({
+        url: `http://43.140.194.248/api/oae/${id}`,
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            onSuccess(data)
+        }
+    })
+}
+
 // 加载OAETerm列表
 function loadOAETermList(onSuccess, keyword, page = 1, pageSize = 20) {
     // 初始化参数
@@ -160,11 +201,7 @@ function loadOAETermList(onSuccess, keyword, page = 1, pageSize = 20) {
         data: params,
         dataType: "json",
         success: function (data) {
-            console.log("数据加载成功")
             onSuccess(data)
-        },
-        error: function () {
-            console.log("数据加载失败")
         }
     })
 }
@@ -181,12 +218,14 @@ function loadOAETermParents(onSuccess, IRI) {
         data: params,
         dataType: "json",
         success: function (data) {
-            console.log("数据加载成功")
             onSuccess(data)
-        },
-        error: function () {
-            console.log("数据加载失败")
         }
     })
+}
+
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]); return null;
 }
 
