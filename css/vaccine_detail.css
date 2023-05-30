@@ -99,17 +99,20 @@ body {
 }
 
 .vaccine-adverse-box {
-    padding: 0 20px 15px;
+    column-count: 3;
+    column-gap: 20px;
+    padding: 15px 5px;
 }
-
 
 .search-result-item {
     border: #2A2829 3px solid;
     border-radius: 10px;
     box-shadow: 2px 10px 20px -18px;
-    margin: 20px 0;
     transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) .8s;
+    break-inside: avoid-column;
     cursor: pointer;
+    height: fit-content;
+    margin-bottom: 30px;
 }
 
 .search-result-item:hover {
@@ -133,7 +136,7 @@ body {
 }
 
 .search-result-item .sub-title {
-    font-size: 17px;
+    font-size: 10px;
 }
 
 .search-result-item .item-label {
@@ -143,8 +146,9 @@ body {
 
 .search-result-item .item-long-text {
     padding: 10px;
-    max-lines: 1;
-    white-space: nowrap;
+    margin: 10px 5px;
+    font-size: 17px;
+    white-space: pre-wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -152,6 +156,8 @@ body {
 .search-result-item .tag-container {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .search-result-item .tag-item {
@@ -160,4 +166,12 @@ body {
     padding: 5px 10px;
     margin: 5px 5px;
     color: white;
+    max-width: 40%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.title {
+    padding: 15px;
 }
