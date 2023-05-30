@@ -23,20 +23,4 @@ $(function () {
             }
         })
     }
-
-    // $('#btn_login').addEventListener('click', function () {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: 'http://www.liulongbin.top:3006/api/addbook',
-    //         data: {
-    //             bookname: '德米安',
-    //             author: '黑塞',
-    //             publisher: '人民文学出版社'
-    //         },
-    //         success: function (res) {
-    //             console.log('success!')
-    //         }
-    //     })
-    // })
-
 })

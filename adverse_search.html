@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>不良反应报告查询</title>
+    <link href="./css/widget/nav-bar.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+
+    <link href="./css/adverse_search.css" rel="stylesheet">
+    <link href="./css/widget/spinner.css" rel="stylesheet">
+
+    <script src="./js/adverse_search.js"></script>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="top-title-box">
+            <div class="main-title">
+                <h1 class="main-title-text">V a c c i n e<br>A b o u t</h1>
+            </div>
+            <p class="main-title-describe">上市疫苗信息咨询及安全监测系统</p>
+        </div>
+
+
+        <!-- Navigation-->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a class="nav-brand" href="index.html">VaccineAbout</a>
+                <a class="nav-brand" href="vaccineCFDA.html">疫苗查询</a>
+                <a class="nav-brand" href="adverse.html">不良反应报告</a>
+                <a class="nav-brand" href="adverse_search.html">不良反应报告查询</a>
+                <a class="nav-brand" href="oaeLabel.html">OAE词条</a>
+                <a class="nav-brand" href="vaers.html">Vaers</a>
+            </div>
+        </nav>
+
+
+        <div id="mian-content">
+
+            <div id="search-panel">
+
+                <div class="panel-main-title">
+                    <h1>不良反应报告查询</h1>
+                </div>
+
+                <div class="search-panel-container">
+                    <div class="search-label">1. 选择目标疫苗</div>
+                    <div class="search-condition">
+                        <div class="search-item-box" id="vaccine-search-box">
+                            <div class="search-keyword-box">
+                                <input class="search-box-input" id="vaccine-input" type="text" placeholder="请输入要搜索的疫苗名称">
+                                <button class="search-button" id="vaccine-search">搜索</button>
+                            </div>
+                            <div class="search-item-result-box" id="vaccine-search-result">
+                                <div class="loading-box">
+                                    <div class="spinner"></div>
+                                </div>
+                                <ul id="vaccine-result-list">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="search-select-item-panel" id="vaccine-select-info-box">
+                            <h3>当前选择疫苗：</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-panel-container">
+                    <div class="search-label">2. 选择目标症状</div>
+                    <div class="search-condition">
+                        <div class="search-item-box" id="symptom-search-box">
+                            <div class="search-keyword-box">
+                                <input class="search-box-input" id="symptom-input" type="text" placeholder="请输入要搜索的症状名称">
+                                <button class="search-button" id="symptom-search">搜索</button>
+                            </div>
+                            <div class="search-item-result-box" id="symptom-search-result">
+                                
+                                <div class="loading-box">
+                                    <div class="spinner"></div>
+                                </div>
+                                <ul id="symptom-result-list">
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="search-select-item-panel" id="symptom-select-info-box">
+                            <h3>当前选择症状：</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-panel-container">
+                    <div class="search-label">3. 通过描述关键词查询</div>
+                    <div class="search-condition">
+                        <input class="search-input" id="adverse-search-input" type="text">
+                    </div>
+                </div>
+
+                <div class="search-panel-submit">
+                    <button id="adverse-search-submit-button">
+                        <span class="box">
+                            查询
+                        </span>
+                    </button>
+                </div>
+
+            </div>
+
+            <div id="search-result-panel">
+                <div class="loading-box">
+                    <div class="spinner"></div>
+                </div>
+                <div id="search-result-box">
+
+                </div>
+                <div id="search-adverse-result-box">
+                    <table class="adverse-result-table">
+                        <thead>
+                            <tr>
+                                <th>疫苗</th>
+                                <th>症状</th>
+                                <th>总数</th>
+                                <th>Prr</th>
+                                <th>Chi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adverse-result-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./js/widget/tip.js"></script>
+    <script src="./js/widget/snackbar.js"></script>
+</body>
+
+</html>

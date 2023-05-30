@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>不良反应报告详情</title>
+    <link href="../css/widget/nav-bar.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
+
+    <link href="../css/advers_detail.css" rel="stylesheet">
+
+    <script src="../js/adverse_detail.js"></script>
+
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="top-title-box">
+            <div class="main-title">
+                <h1 class="main-title-text">V a c c i n e<br>A b o u t</h1>
+            </div>
+            <p class="main-title-describe">上市疫苗信息咨询及安全监测系统</p>
+        </div>
+
+
+        <!-- Navigation-->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a class="nav-brand" href="/index.html">VaccineAbout</a>
+                <a class="nav-brand" href="/vaccineCFDA.html">疫苗查询</a>
+                <a class="nav-brand" href="/adverse.html">不良反应报告</a>
+                <a class="nav-brand" href="/adverse_search.html">不良反应报告查询</a>
+                <a class="nav-brand" href="/oaeLabel.html">OAE词条</a>
+                <a class="nav-brand" href="/questionnaire.html">问卷</a>
+                <a class="nav-brand" href="/vaers.html">Vaers</a>
+            </div>
+        </nav>
+
+        <div id="main-content">
+            <table class="detail-item" id="detail-item-base">
+                <tr>
+                    <th>姓名</th>
+                    <td id="detail-name"></td>
+                </tr>
+                <tr>
+                    <th>性别</th>
+                    <td id="detail-sex"></td>
+                </tr>
+                <tr>
+                    <th>出生日期</th>
+                    <td id="detail-birth"></td>
+                </tr>
+                <tr>
+                    <th>联系电话</th>
+                    <td id="detail-phone"></td>
+                </tr>
+                <tr>
+                    <th>现住址</th>
+                    <td id="detail-address"></td>
+                </tr>
+                <tr>
+                    <th>创建日期</th>
+                    <td id="detail-createDate"></td>
+                </tr>
+            </table>
+
+            <table class="detail-item" id="detail-item-adverse">
+                <tr>
+                    <th>就诊单位</th>
+                    <td id="detail-treatmentDepartment"></td>
+                </tr>
+                <tr>
+                    <th>反应发生日期</th>
+                    <td id="detail-onsetDate"></td>
+                </tr>
+                <tr>
+                    <th>报告人</th>
+                    <td id="detail-rapporteur"></td>
+                </tr>
+                <tr>
+                    <th>报告人联系电话</th>
+                    <td id="detail-rapporteurPhone"></td>
+                </tr>
+                <tr>
+                    <th>报告单位</th>
+                    <td id="detail-rapporteurAddress"></td>
+                </tr>
+                <tr>
+                    <th>不良反应描述</th>
+                    <td id="detail-description"></td>
+                </tr>
+            </table>
+
+            <table class="detail-item vertical" id="detail-item-symptom">
+                <tr>
+                    <th>症状</th>
+                    <th>OAE</th>
+                </tr>
+            </table>
+
+            <table class="detail-item vertical" id="detail-item-vaccine">
+                <tr>
+                    <th>疫苗类型</th>
+                    <th>疫苗名称</th>
+                    <th>制造商</th>
+                    <th>接种日期</th>
+                    <th>接种剂次</th>
+                    <th>接种途径</th>
+                    <th>接种部位</th>
+                </tr>
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="../js/widget/snackbar.js"></script>
+</body>
+
+</html>

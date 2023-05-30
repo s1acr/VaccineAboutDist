@@ -17,143 +17,110 @@
     <title>Vaers</title>
     <!-- jQuery -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
-        type="text/css" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-        type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/common.css" rel="stylesheet" />
-    <link rel="stylesheet" href="./css/index.css">
     <!-- vaers css -->
-    <link rel="stylesheet" href="./css/vaers.css">
+    <link href="./css/vaers.css" rel="stylesheet">
+    <link href="./css/widget/spinner.css" rel="stylesheet">
+    <link href="./css/widget/nav-bar.css" rel="stylesheet">
     <!-- vaers js -->
     <script src="./js/vaers.js"></script>
-    <link rel="stylesheet" href="./css/spinner.css">
 </head>
 
 <body>
 
-    <!-- Navigation-->
-    <nav id="bar" class="navbar bg-light static-top">
-        <div class="" style="margin-left: 20px;">
-            <li class=""><a class="navbar-brand" href="index.html">VaccineAbout</a></li>
-            <li class=""><a class="navbar-brand" href="vaccineCFDA.html">疫苗查询</a></li>
-            <li><a class="navbar-brand" href="adverse.html">不良反应报告</a></li>
-            <li><a class="navbar-brand" href="oaeLabel.html">OAE词条</a></li>
-            <li><a class="navbar-brand" href="questionnaire.html">问卷</a></li>
-            <li><a class="navbar-brand" href="vaers.html">Vaers</a></li>
+    <div class="content">
+
+        <div class="top-title-box">
+            <div class="main-title">
+                <h1 class="main-title-text">V a c c i n e<br>A b o u t</h1>
+            </div>
+            <p class="main-title-describe">上市疫苗信息咨询及安全监测系统</p>
         </div>
-        <li style="margin-right: 20px;"><a id="btn_login" class="btn btn-primary " href="javascript:;">登录</a></li>
-    </nav>
 
-    <!-- Page Content -->
+        <!-- Navigation-->
+        <nav class="nav-bar">
+            <div class="nav-container">
+                <a class="nav-brand" href="index.html">VaccineAbout</a>
+                <a class="nav-brand" href="vaccineCFDA.html">疫苗查询</a>
+                <a class="nav-brand" href="adverse.html">不良反应报告</a>
+                <a class="nav-brand" href="adverse_search.html">不良反应报告查询</a>
+                <a class="nav-brand" href="oaeLabel.html">OAE词条</a>
+                <a class="nav-brand active" href="vaers.html">Vaers</a>
+            </div>
+        </nav>
 
-    <div class="main-content">
-        <div class="vaers-search-form">
-            <h1 class="title" id="vaers-title">Vaers数据检索</h1>
-            <div class="form-group">
-                <!-- 项目一 -->
-                <div class="form-item">
-                    <h2 class="form-title">1. 选择Vaccine</h2>
-                    <div class="search-box" id="vaccine-search-box">
-                        <div class="search-keyword-box">
-                            <input class="search-input" id="vaccine-input" type="text" placeholder="请输入vaccine">
-                            <button class="search-button" id="vaccine-search">搜索</button>
+        <!-- Page Content -->
+
+        <div class="main-content">
+            <div class="vaers-search-form">
+                <h1 class="title" id="vaers-title">Vaers数据检索</h1>
+                <div class="form-group">
+                    <!-- 项目一 -->
+                    <div class="form-item">
+                        <h2 class="form-title">1. 选择Vaccine</h2>
+                        <div class="search-box" id="vaccine-search-box">
+                            <div class="search-keyword-box">
+                                <input class="search-input" id="vaccine-input" type="text" placeholder="请输入vaccine">
+                                <button class="search-button" id="vaccine-search">搜索</button>
+                            </div>
+                            <div class="search-result-box" id="vaccine-search-result">
+                                <ul id="vaccine-result-list">
+                                </ul>
+                            </div>
                         </div>
-                        <div class="search-result-box" id="vaccine-search-result">
-                            <ul id="vaccine-result-list">
-                            </ul>
+                    </div>
+                    <!-- 项目二 -->
+                    <div class="form-item">
+                        <h2 class="form-title">2. 选择Symptom</h2>
+                        <div class="search-box" id="symptom-search-box">
+                            <div class="search-keyword-box">
+                                <input class="search-input" id="symptom-input" type="text" placeholder="请输入symptom">
+                                <button class="search-button" id="symptom-search">搜索</button>
+                            </div>
+                            <div class="search-result-box" id="symptom-search-result">
+                                <ul id="symptom-result-list">
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- 项目二 -->
-                <div class="form-item">
-                    <h2 class="form-title">2. 选择Symptom</h2>
-                    <div class="search-box" id="symptom-search-box">
-                        <div class="search-keyword-box">
-                            <input class="search-input" id="symptom-input" type="text" placeholder="请输入symptom">
-                            <button class="search-button" id="symptom-search">搜索</button>
-                        </div>
-                        <div class="search-result-box" id="symptom-search-result">
-                            <ul id="symptom-result-list">
-                            </ul>
-                        </div>
-                    </div>
+                <!-- 提交按钮 -->
+                <div class="vaers-submit">
+                    <button id="vaers-submit-button">
+                        <span class="box">
+                            查询
+                        </span>
+                    </button>
                 </div>
             </div>
-            <!-- 提交按钮 -->
-            <div class="vaers-submit">
-                <button id="vaers-submit-button">查询</button>
-            </div>
-        </div>
-        <!-- 查询结果 -->
-        <div class="vaers-search-result">
-            <table class="vaers-result-table">
-                <thead>
-                    <tr>
-                        <th>Vaccine</th>
-                        <th>Symptom</th>
-                        <th>Total</th>
-                        <th>Prr</th>
-                        <th>Chi</th>
-                    </tr>
-                </thead>
-                <tbody id="vaers-result-table-body">
-                </tbody>
-            </table>
-            <div class="spinner"></div>
-            <div class="vaers-pagination-box">
-                <ul class="pagination" id="vaers-pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#!">Previous</a>
-                    </li>
-                    <li class="page-item" id="page-item-next">
-                        <a class="page-link" href="#!">Next</a>
-                    </li>
-                </ul>
+            <!-- 查询结果 -->
+            <div class="vaers-search-result">
+                <div class="vaers-result-table-box">
+                    <table class="vaers-result-table">
+                        <thead>
+                            <tr>
+                                <th>Vaccine</th>
+                                <th>Symptom</th>
+                                <th>Total</th>
+                                <th>Prr</th>
+                                <th>Chi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="vaers-result-table-body">
+                        </tbody>
+                    </table>
+                    <div class="pagination-box">
+                        <ul class="pagination">
+                            <li><a id="pagination-before">«</a></li>
+                            <li><a class="active" id="pagination-current">2</a></li>
+                            <li><a id="pagination-after">»</a></li>
+                          </ul>
+                    </div>
+                </div>
+                <div class="spinner"></div>
             </div>
         </div>
     </div>
-
-    <!-- Footer -->
-    <footer class="footer bg-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                    <ul class="list-inline mb-2">
-                        <li class="list-inline-item"><a href="#!">About</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Contact</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                    </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; VaccineAbout 2023. All Rights Reserved.</p>
-                </div>
-                <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item me-4">
-                            <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
+    <div id="snackbar"></div>
 
 </body>
 
